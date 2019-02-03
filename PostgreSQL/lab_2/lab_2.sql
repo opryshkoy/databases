@@ -1,4 +1,4 @@
--- Юлия Яковлева
+SELECT 'Юлия Яковлева';
 
 --1.1
 SELECT * FROM public.ratings
@@ -64,5 +64,3 @@ SELECT
 AVG(rating) as avg_rating
 from avg_rating;
 
-	
-	
