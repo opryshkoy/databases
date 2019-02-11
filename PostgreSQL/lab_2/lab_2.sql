@@ -44,9 +44,12 @@ LIMIT 10;
 SELECT 
 imdbid
 FROM public.links
-WHERE (
-SELECT AVG(rating) > 3.5	
+WHERE links.movieid IN (
+SELECT
+ratings.movieid
 FROM public.ratings
+GROUP BY ratings.movieid
+HAVING AVG(rating) > 3.5	
 	)
 LIMIT 10;
 
