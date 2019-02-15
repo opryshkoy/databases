@@ -1,0 +1,19 @@
+
+# команда для загрузки файла в MONGO
+
+/usr/bin/mongoimport --host $APP_MONGO_HOST --port $APP_MONGO_PORT --db movies --collection tags --file $NETOLOGY_DATA/raw_data/simple_tags.json
+
+
+# запрос, который выводит общее число тегов
+
+db.tags.count()
+
+
+# фильтрация: считаем только количество тегов woman
+
+db.tags.count({'name': 'women'})
+
+
+# вывод top-3 самых распространённых тегов
+
+db.tags.aggregate([{$group: {_id: "$name", tag_count: { $sum: 1 }}},{$sort:{tag_count: -1}},{$limit: 3}])
